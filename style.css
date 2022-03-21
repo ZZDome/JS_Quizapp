@@ -3,6 +3,9 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url("img/body-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .mainCard{
@@ -16,5 +19,17 @@ body{
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    height: 70vh !important;
+}
+
+.sideCard img{
+    width: 180px;
+}
+
+.cardBody{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
     height: 70vh !important;
 }
