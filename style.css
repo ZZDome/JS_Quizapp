@@ -33,3 +33,8 @@ body{
     flex-direction: column;
     height: 70vh !important;
 }
+
+.card-body{
+    min-width: 600px;
+    text-align: center;
+}

@@ -1,46 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quizapp</title>
+function tempStart(){
+    return /* html */ `
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+`;
+}
 
-    <script src="script.js"></script>
-
-</head>
-<body onload="render()">
-    
-    <div class="card mb-3 mainCard">
-        <div class="row g-0">
-          <div class="col-md-4 sideCard">
-            <img src="img/logo.png" class="img-fluid rounded-start">
-            <div class="card">
-                <div class="card-body">
-                  Allgemeinwissen Quiz
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-body">
-                  This is some text within a card body.
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-body">
-                  This is some text within a card body.
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-body">
-                  This is some text within a card body.
-                </div>
-              </div>
-          </div>
-          <div id="questCard" class="col-md-8">
-            <div class="card-body cardBody">
+function tempQuest(){
+    return /* html */ `
+    <div class="card-body cardBody">
               <h5 class="card-title">Frage</h5>
               <div class="card">
                 <div class="card-body">
@@ -87,9 +53,5 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-</body>
-</html>
+`;
+}
