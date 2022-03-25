@@ -39,6 +39,126 @@ let questions = [
         'answer4':'Javier Bardem',
         'rightAnswer': 2
     },
+    {
+        'question':'Einen Feinschmecker nennt man auch?',
+        'answer1':'Gourmet',
+        'answer2':'Gourmed',
+        'answer3':'Genießer',
+        'answer4':'Leckermäulchen',
+        'rightAnswer': 1
+    },
+    {
+        'question':'Wer oder was ist eine “Druidin”?',
+        'answer1':'Eine Kräutersammlerin im Harz',
+        'answer2':'Eine Hunderasse aus China',
+        'answer3':'Ein Magnetfeld',
+        'answer4':'Eine Priesterin oder Zauberin der keltischen Religion',
+        'rightAnswer': 4
+    },
+    {
+        'question':'Mit welcher Tiergruppe sind die Dinosaurier am engsten verwandt?',
+        'answer1':'Vögeln',
+        'answer2':'Eidechsen',
+        'answer3':'Alligatoren',
+        'answer4':'Affen',
+        'rightAnswer': 1
+    },
+    {
+        'question':'Welches Metall leitet Wärme am besten?',
+        'answer1':'Silber',
+        'answer2':'Kupfer',
+        'answer3':'Gold',
+        'answer4':'Aluminium',
+        'rightAnswer': 1
+    },
+    {
+        'question':'Wie viele Bundesländer hat Deutschland?',
+        'answer1':'13',
+        'answer2':'9',
+        'answer3':'16',
+        'answer4':'20',
+        'rightAnswer': 3
+    },
+    {
+        'question':'Wie lautet der zweite Planet in unserem Sonnensystem?',
+        'answer1':'Venus',
+        'answer2':'Mars',
+        'answer3':'Jupiter',
+        'answer4':'Venera',
+        'rightAnswer': 1
+    },
+    {
+        'question':'Die Zeichentrick-Familie Simpsons lebt in welcher Stadt?',
+        'answer1':'New York',
+        'answer2':'Springfield',
+        'answer3':'Chicago',
+        'answer4':'Minnesota',
+        'rightAnswer': 2
+    },
+    {
+        'question':'In welcher Stadt findet sich Big Ben?',
+        'answer1':'New York',
+        'answer2':'Hong Kong',
+        'answer3':'London',
+        'answer4':'Istanbul',
+        'rightAnswer': 3
+    },
+    {
+        'question':'Welches dieser Tiere hält keinen Winterschlaf?',
+        'answer1':'Eichhörnchen',
+        'answer2':'Fledermaus',
+        'answer3':'Igel',
+        'answer4':'Siebenschläfer',
+        'rightAnswer': 1
+    },
+    {
+        'question':'In welcher Einheit wird der elektrische Widerstand gemessen?',
+        'answer1':'Ohm',
+        'answer2':'Volt',
+        'answer3':'Ampere',
+        'answer4':'Watt',
+        'rightAnswer': 1
+    },
+    {
+        'question':'Wie beginnt Artikel 1 des deutschen Grundgesetzes?',
+        'answer1':'„Alle Menschen sind vor dem Gesetz gleich.“',
+        'answer2':'„Jeder hat das Recht auf die freie Entfaltung seiner Persönlichkeit.“',
+        'answer3':'„Jeder hat das Recht, seine Meinung in Wort, Schrift und Bild frei zu äußern.“',
+        'answer4':'„Die Würde des Menschen ist unantastbar.“',
+        'rightAnswer': 4
+    },
+    {
+        'question':'Wie lautet das chemische Symbol für Blei?',
+        'answer1':'Bl',
+        'answer2':'Pb',
+        'answer3':'Be',
+        'answer4':'Pt',
+        'rightAnswer': 2
+    },
+    {
+        'question':'Wie viele Planeten hat unser Sonnensystem?',
+        'answer1':'8',
+        'answer2':'9',
+        'answer3':'10',
+        'answer4':'11',
+        'rightAnswer': 1
+    },
+    {
+        'question':'Welches ist das höchste Amt in Deutschland?',
+        'answer1':'Bundespräsident',
+        'answer2':'Bundeskanzler',
+        'answer3':'Bundestagspräsident',
+        'answer4':'Oberster Richter am Bundesverfassungsgericht',
+        'rightAnswer': 1
+    },
+    {
+        'question':'Wie heißt die Schicht der Atmosphäre, die der Erde am nächsten ist?',
+        'answer1':'Troposphäre',
+        'answer2':'Stratosphäre',
+        'answer3':'Mesosphäre',
+        'answer4':'Thermosphäre',
+        'rightAnswer': 1
+    }
 ];
 
 tempQuestion = 0;
