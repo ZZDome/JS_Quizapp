@@ -38,3 +38,15 @@ body{
     min-width: 600px;
     text-align: center;
 }
+
+.cursor{
+    cursor: pointer;
+}
+
+.btnColorGreen{
+    color: green;
+}
+
+.btnColorRed{
+    color: red;
+}
