@@ -35,18 +35,27 @@ body{
 }
 
 .card-body{
-    min-width: 600px;
+    min-width: 25vw;
     text-align: center;
 }
 
-.cursor{
+.cursor:hover{
     cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.07);
 }
 
-.btnColorGreen{
-    color: green;
+.noCurser{
+    cursor: auto !important;
 }
 
-.btnColorRed{
-    color: red;
+.viewColorGreen{
+    background-color: green !important;
+}
+
+.viewColorRed{
+    background-color: red !important;
+}
+
+.bgActive{
+    background-color: rgba(0, 0, 0, 0.07);
 }

@@ -162,13 +162,22 @@ let questions = [
 ];
 
 let myAnwers = [];
+let startGeneral = false;
+let tempQuestion = 0;
+let hitAnswer = false;
 
-tempQuestion = 0;
-hitAnswer = false;
 
 function tempStart() {
     return /* html */ `
-
+    <div class="card-body cardBody">
+    <div class="card text-center" style="width: 48rem;">
+  <div class="card-body">
+    <h5 class="card-title">Allgemeinwissen Quiz</h5>
+    <p class="card-text">Hier werden dir 20 Fragen gestellt um dein Allgemeinwissen zu Testen. Viel Spaß.</p>
+    <a onclick="generalKnowledge()" href="#" class="btn btn-primary">START</a>
+  </div>
+</div>
+</div>
 `;
 }
 
@@ -197,27 +206,27 @@ function tempQuest(i) {
                 </div>
               </div>
               <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                <div class="btn-group me-2" role="group" aria-label="First group">
-                  <button onclick="changeQuest(0)" id="button1" type="button" class="btn btn-secondary">1</button>
-                  <button onclick="changeQuest(1)" id="button2" type="button" class="btn btn-secondary">2</button>
-                  <button onclick="changeQuest(2)" id="button3" type="button" class="btn btn-secondary">3</button>
-                  <button onclick="changeQuest(3)" id="button4" type="button" class="btn btn-secondary">4</button>
-                  <button onclick="changeQuest(4)" id="button5" type="button" class="btn btn-secondary">5</button>
-                  <button onclick="changeQuest(5)" id="button6" type="button" class="btn btn-secondary">6</button>
-                  <button onclick="changeQuest(6)" id="button7" type="button" class="btn btn-secondary">7</button>
-                  <button onclick="changeQuest(7)" id="button8" type="button" class="btn btn-secondary">8</button>
-                  <button onclick="changeQuest(8)" id="button9" type="button" class="btn btn-secondary">9</button>
-                  <button onclick="changeQuest(9)" id="button10" type="button" class="btn btn-secondary">10</button>
-                  <button onclick="changeQuest(10)" id="button11" type="button" class="btn btn-secondary">11</button>
-                  <button onclick="changeQuest(11)" id="button12" type="button" class="btn btn-secondary">12</button>
-                  <button onclick="changeQuest(12)" id="button13" type="button" class="btn btn-secondary">13</button>
-                  <button onclick="changeQuest(13)" id="button14" type="button" class="btn btn-secondary">14</button>
-                  <button onclick="changeQuest(14)" id="button15" type="button" class="btn btn-secondary">15</button>
-                  <button onclick="changeQuest(15)" id="button16" type="button" class="btn btn-secondary">16</button>
-                  <button onclick="changeQuest(16)" id="button17" type="button" class="btn btn-secondary">17</button>
-                  <button onclick="changeQuest(17)" id="button18" type="button" class="btn btn-secondary">18</button>
-                  <button onclick="changeQuest(18)" id="button19" type="button" class="btn btn-secondary">19</button>
-                  <button onclick="changeQuest(19)" id="button20" type="button" class="btn btn-secondary">20</button>
+                <div class="btn-group me-2 d-flex flex-wrap" role="group" aria-label="First group">
+                  <button id="button1" type="button" class="btn noCurser btn-secondary">1</button>
+                  <button id="button2" type="button" class="btn noCurser btn-secondary">2</button>
+                  <button id="button3" type="button" class="btn noCurser btn-secondary">3</button>
+                  <button id="button4" type="button" class="btn noCurser btn-secondary">4</button>
+                  <button id="button5" type="button" class="btn noCurser btn-secondary">5</button>
+                  <button id="button6" type="button" class="btn noCurser btn-secondary">6</button>
+                  <button id="button7" type="button" class="btn noCurser btn-secondary">7</button>
+                  <button id="button8" type="button" class="btn noCurser btn-secondary">8</button>
+                  <button id="button9" type="button" class="btn noCurser btn-secondary">9</button>
+                  <button id="button10" type="button" class="btn noCurser btn-secondary">10</button>
+                  <button id="button11" type="button" class="btn noCurser btn-secondary">11</button>
+                  <button id="button12" type="button" class="btn noCurser btn-secondary">12</button>
+                  <button id="button13" type="button" class="btn noCurser btn-secondary">13</button>
+                  <button id="button14" type="button" class="btn noCurser btn-secondary">14</button>
+                  <button id="button15" type="button" class="btn noCurser btn-secondary">15</button>
+                  <button id="button16" type="button" class="btn noCurser btn-secondary">16</button>
+                  <button id="button17" type="button" class="btn noCurser btn-secondary">17</button>
+                  <button id="button18" type="button" class="btn noCurser btn-secondary">18</button>
+                  <button id="button19" type="button" class="btn noCurser btn-secondary">19</button>
+                  <button id="button20" type="button" class="btn noCurser btn-secondary">20</button>
                 </div>
               </div>
             </div>
@@ -232,30 +241,28 @@ function highlightSiteButton(i) {
     site.classList.add('btn-primary');
 }
 
-function changeQuest(directIndex) {
-    hitAnswer = false;
-    tempQuestion = directIndex;
-    render();
-}
-
 function nextQuest(i) {
     tempQuestion = i + 1;
-    render();
+    paintView();
+    generalKnowledge();
 }
 
 function render() {
     hitAnswer = false;
-    generalKnowledge()
 }
 
 function generalKnowledge() {
+    hitAnswer = false;
     let quest = document.getElementById('questCard');
     quest.innerHTML = tempQuest(tempQuestion);
     highlightSiteButton(tempQuestion)
 }
 
 function showGeneral() {
-
+    startGeneral = true;
+    paintOptions(1);
+    let quest = document.getElementById('questCard');
+    quest.innerHTML = tempStart();
 }
 
 function checkAnswer(i, answer) {
@@ -276,6 +283,19 @@ function checkAnswer(i, answer) {
 function saveAnswers(i, result, points){
     myAnswer = {'index': i, 'result': result, 'points': points};
     myAnwers.push(myAnswer);
+}
+
+function paintOptions(i){
+    for (j = 1; j < 4; j++){
+        let option = document.getElementById('option' + j);
+        option.classList.remove('bgActive');
+    }
+    let option = document.getElementById('option' + i);
+    option.classList.add('bgActive');
+}
+
+function paintView(){
+    
 }
 
 function loadAnswers(){
