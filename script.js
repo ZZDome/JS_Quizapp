@@ -169,15 +169,15 @@ let hitAnswer = false;
 
 function tempStart() {
     return /* html */ `
-    <div class="card-body cardBody">
-    <div class="card text-center" style="width: 48rem;">
-  <div class="card-body">
-    <h5 class="card-title">Allgemeinwissen Quiz</h5>
-    <p class="card-text">Hier werden dir 20 Fragen gestellt um dein Allgemeinwissen zu Testen. Viel Spaß.</p>
-    <a onclick="generalKnowledge()" href="#" class="btn btn-primary">START</a>
-  </div>
-</div>
-</div>
+        <div class="card-body cardBody">
+            <div class="card text-center" style="width: 48rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Allgemeinwissen Quiz</h5>
+                    <p class="card-text">Hier werden dir 20 Fragen gestellt um dein Allgemeinwissen zu Testen. Viel Spaß.</p>
+                    <a onclick="generalKnowledge()" href="#" class="btn btn-primary">START</a>
+                </div>
+            </div>
+        </div>
 `;
 }
 
@@ -243,8 +243,11 @@ function highlightSiteButton(i) {
 
 function nextQuest(i) {
     tempQuestion = i + 1;
-    paintView();
-    generalKnowledge();
+    if (tempQuestion > 19){
+        generalEndPage();
+    }else{
+        generalKnowledge();
+    }
 }
 
 function render() {
@@ -253,9 +256,11 @@ function render() {
 
 function generalKnowledge() {
     hitAnswer = false;
+
     let quest = document.getElementById('questCard');
     quest.innerHTML = tempQuest(tempQuestion);
-    highlightSiteButton(tempQuestion)
+    highlightSiteButton(tempQuestion);
+    paintView();
 }
 
 function showGeneral() {
@@ -263,6 +268,30 @@ function showGeneral() {
     paintOptions(1);
     let quest = document.getElementById('questCard');
     quest.innerHTML = tempStart();
+}
+function generalEndPage(){
+    let totalScore = calcScore();
+    let endPage = document.getElementById('questCard');
+    endPage.innerHTML = /* html */ `
+        <div class="card-body cardBody">
+            <div class="card text-center" style="width: 48rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Ergebniss</h5>
+                    <p class="card-text">Herzlichen Glückwunsch. Dein Score beträgt <b>${totalScore}</b>. <br> Trage einen Namen ein um deine Leistung im Scoreboard zu Speichern.</p>
+                    <input id="scoreNameInput" type="text" placeholder="Dein Name">
+                    <a onclick="saveScore()" href="#" class="btn btn-primary">Speichern</a>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function calcScore(){
+    let totalScore = 0;
+    for (let i = 0; i < myAnwers.length; i++){
+        totalScore = totalScore + myAnwers[i].points;
+    }
+    return totalScore;
 }
 
 function checkAnswer(i, answer) {
@@ -273,20 +302,20 @@ function checkAnswer(i, answer) {
             saveAnswers(i, true, 100);
             delayNextQuest(i);
         } else {
-            document.getElementById('answer' + answer).classList.add('bg-danger'); 
+            document.getElementById('answer' + answer).classList.add('bg-danger');
             saveAnswers(i, false, 10);
             delayNextQuest(i);
         }
     }
 }
 
-function saveAnswers(i, result, points){
-    myAnswer = {'index': i, 'result': result, 'points': points};
+function saveAnswers(i, result, points) {
+    myAnswer = { 'index': i, 'result': result, 'points': points };
     myAnwers.push(myAnswer);
 }
 
-function paintOptions(i){
-    for (j = 1; j < 4; j++){
+function paintOptions(i) {
+    for (j = 1; j < 4; j++) {
         let option = document.getElementById('option' + j);
         option.classList.remove('bgActive');
     }
@@ -294,19 +323,25 @@ function paintOptions(i){
     option.classList.add('bgActive');
 }
 
-function paintView(){
-    
+function paintView() {
+    if (myAnwers.length > 0) {
+        for (let i = 0; i < myAnwers.length; i++) {
+            let j = i + 1;
+            let view = document.getElementById('button' + j);
+            if (myAnwers[i].result == true) {
+                view.classList.add('viewColorGreen');
+            } else {
+                view.classList.add('viewColorRed');
+            }
+        }
+    }
 }
 
-function loadAnswers(){
+function loadAnswers() {
 
 }
 
-function drawNavBtn(){
-    
-}
-
-function delayNextQuest(i){
+function delayNextQuest(i) {
     setTimeout(() => {
         nextQuest(i)
     }, 1000);
