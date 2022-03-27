@@ -162,6 +162,8 @@ let questions = [
 ];
 
 let myAnwers = [];
+let scoreListScore = [];
+let scoreListName = [];
 let startGeneral = false;
 let tempQuestion = 0;
 let hitAnswer = false;
@@ -233,6 +235,42 @@ function tempQuest(i) {
 `;
 }
 
+function tempScore(){
+    return /* html */ `
+    <div class="card-body cardBody">
+        <div class="card text-center" style="width: 48rem;">
+        <h5 class="card-title mt-3">Scoreboard</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Score</th>
+                </tr>
+            </thead>
+            <tbody id="scoreTable">
+                <tr>
+                    <th scope="row">1</th>
+                    <td>-----</td>
+                    <td>-----</td>  
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+`;
+}
+
+function tempFillTable(i, name, score){
+    return /* html */ `
+                <tr>
+                    <th scope="row">${i}</th>
+                    <td>${name}</td>
+                    <td>${score}</td>  
+                </tr>     
+`;
+}
+
 function highlightSiteButton(i) {
     let j = i;
     j = j + 1;
@@ -269,6 +307,22 @@ function showGeneral() {
     let quest = document.getElementById('questCard');
     quest.innerHTML = tempStart();
 }
+
+function showScoreboard(){
+    let scoreboard = document.getElementById('questCard');
+    scoreboard.innerHTML = tempScore();
+    fillTable();
+}
+
+function fillTable(){
+    let scoreTable = document.getElementById('scoreTable');
+    if(scoreListName || scoreListScore){
+        for (let i = 0; i < scoreListScore.length; i++){
+            scoreTable.innerHTML = tempFillTable(i+1, scoreListName[i], scoreListScore[i]);
+        }
+    }
+}
+
 function generalEndPage(){
     let totalScore = calcScore();
     let endPage = document.getElementById('questCard');
@@ -279,7 +333,7 @@ function generalEndPage(){
                     <h5 class="card-title">Ergebniss</h5>
                     <p class="card-text">Herzlichen Glückwunsch. Dein Score beträgt <b>${totalScore}</b>. <br> Trage einen Namen ein um deine Leistung im Scoreboard zu Speichern.</p>
                     <input id="scoreNameInput" type="text" placeholder="Dein Name">
-                    <a onclick="saveScore()" href="#" class="btn btn-primary">Speichern</a>
+                    <a onclick="saveScore(${totalScore})" href="#" class="btn btn-primary">Speichern</a>
                 </div>
             </div>
         </div>
@@ -292,6 +346,12 @@ function calcScore(){
         totalScore = totalScore + myAnwers[i].points;
     }
     return totalScore;
+}
+
+function saveScore(score){
+    let name = document.getElementById('scoreNameInput')
+    scoreListName.push(name.value);
+    scoreListScore.push(score);
 }
 
 function checkAnswer(i, answer) {
