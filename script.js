@@ -161,9 +161,8 @@ let questions = [
     }
 ];
 
+let scoreList = [];
 let myAnwers = [];
-let scoreListScore = [];
-let scoreListName = [];
 let startGeneral = false;
 let tempQuestion = 0;
 let hitAnswer = false;
@@ -290,11 +289,11 @@ function nextQuest(i) {
 
 function render() {
     hitAnswer = false;
+    loadStorage();
 }
 
 function generalKnowledge() {
     hitAnswer = false;
-
     let quest = document.getElementById('questCard');
     quest.innerHTML = tempQuest(tempQuestion);
     highlightSiteButton(tempQuestion);
@@ -303,6 +302,8 @@ function generalKnowledge() {
 
 function showGeneral() {
     startGeneral = true;
+    myAnwers = [];
+    tempQuestion = 0;
     paintOptions(1);
     let quest = document.getElementById('questCard');
     quest.innerHTML = tempStart();
@@ -316,9 +317,14 @@ function showScoreboard(){
 
 function fillTable(){
     let scoreTable = document.getElementById('scoreTable');
-    if(scoreListName || scoreListScore){
-        for (let i = 0; i < scoreListScore.length; i++){
-            scoreTable.innerHTML = tempFillTable(i+1, scoreListName[i], scoreListScore[i]);
+    if(scoreList){
+        scoreTable.innerHTML = ``;
+        for (let i = 0; i < scoreList.length; i++){
+            if (scoreList.length < 1 || scoreList.length > 10){
+                break
+            }else{
+                scoreTable.innerHTML += tempFillTable(i+1, scoreList[i].name, scoreList[i].points);
+            }
         }
     }
 }
@@ -349,9 +355,13 @@ function calcScore(){
 }
 
 function saveScore(score){
-    let name = document.getElementById('scoreNameInput')
-    scoreListName.push(name.value);
-    scoreListScore.push(score);
+    let name = document.getElementById('scoreNameInput');
+    let nValue = name.value;
+    let value = {name: nValue, points: score};
+    scoreList.push(value);
+    scoreList.sort(function(a, b){return b.points - a.points});
+    saveStorage();
+    showScoreboard();
 }
 
 function checkAnswer(i, answer) {
@@ -397,8 +407,16 @@ function paintView() {
     }
 }
 
-function loadAnswers() {
+function saveStorage(){
+    let nameAsText = JSON.stringify(scoreList);
+    localStorage.setItem('quizappscore', nameAsText);
+}
 
+function loadStorage(){
+    let nameAsText = localStorage.getItem('quizappscore');
+    if(nameAsText){
+        scoreList = JSON.parse(nameAsText);
+    }
 }
 
 function delayNextQuest(i) {
