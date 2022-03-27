@@ -270,6 +270,25 @@ function tempFillTable(i, name, score){
 `;
 }
 
+function tempCredits(){
+    return /* html */ `
+    <div class="card-body cardBody">
+        <div class="card" style="width: 32rem;">
+            <h3>Credits</h3>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><b>Creator:</b> Dominik Waldow</li>
+                <li class="list-group-item"><b>Idea:</b> DeveloperAkademie</li>
+                <li class="list-group-item"><b>Design:</b> DeveloperAkademie and Dominik Waldow</li>
+                <li class="list-group-item"><b>Markup:</b> Dominik Waldow</li>
+                <li class="list-group-item"><b>Styling:</b> Dominik Waldow</li>
+                <li class="list-group-item"><b>Scripting:</b> Dominik Waldow</li>
+                <li class="list-group-item">Visit my profile on <a href="https://github.com/ZZDome">GitHub</a></li>
+            </ul>
+        </div>
+    </div>
+`;
+}
+
 function highlightSiteButton(i) {
     let j = i;
     j = j + 1;
@@ -310,9 +329,16 @@ function showGeneral() {
 }
 
 function showScoreboard(){
+    paintOptions(3);
     let scoreboard = document.getElementById('questCard');
     scoreboard.innerHTML = tempScore();
     fillTable();
+}
+
+function showCredits(){
+    paintOptions(4);
+    let credits = document.getElementById('questCard');
+    credits.innerHTML = tempCredits();
 }
 
 function fillTable(){
@@ -320,10 +346,13 @@ function fillTable(){
     if(scoreList){
         scoreTable.innerHTML = ``;
         for (let i = 0; i < scoreList.length; i++){
-            if (scoreList.length < 1 || scoreList.length > 10){
+            if (scoreList.length < 1){
                 break
             }else{
                 scoreTable.innerHTML += tempFillTable(i+1, scoreList[i].name, scoreList[i].points);
+                if(i > 8){
+                    break
+                }
             }
         }
     }
@@ -380,12 +409,12 @@ function checkAnswer(i, answer) {
 }
 
 function saveAnswers(i, result, points) {
-    myAnswer = { 'index': i, 'result': result, 'points': points };
+    let myAnswer = { 'index': i, 'result': result, 'points': points };
     myAnwers.push(myAnswer);
 }
 
 function paintOptions(i) {
-    for (j = 1; j < 4; j++) {
+    for (j = 1; j <= 4; j++) {
         let option = document.getElementById('option' + j);
         option.classList.remove('bgActive');
     }
