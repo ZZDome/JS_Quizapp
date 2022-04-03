@@ -367,8 +367,9 @@ function generalEndPage(){
     let endPage = document.getElementById('questCard');
     endPage.innerHTML = /* html */ `
         <div class="card-body cardBody">
-            <div class="card text-center" style="width: 48rem;">
+            <div class="card text-center mobileWidth" style="width: 48rem;">
                 <div class="card-body">
+                    <img class="trophyImage" src="img/trophy.png">
                     <h5 class="card-title">Ergebniss</h5>
                     <p class="card-text">Herzlichen Glückwunsch. Dein Score beträgt <b>${totalScore}</b>. <br> Trage einen Namen ein um deine Leistung im Scoreboard zu Speichern.</p>
                     <input id="scoreNameInput" type="text" placeholder="Dein Name">

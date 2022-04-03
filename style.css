@@ -34,6 +34,10 @@ body{
     width: 180px;
 }
 
+.trophyImage{
+    width: 200px;
+}
+
 .cardBody{
     display: flex;
     justify-content: space-evenly;
