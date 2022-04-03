@@ -8,6 +8,14 @@ body{
     background-size: cover;
 }
 
+.mobileHide{
+    display: none;
+}
+
+.showDropdown{
+    display: none;
+}
+
 .mainCard{
     width: 80%;
     height: 70vh;
@@ -58,4 +66,53 @@ body{
 
 .bgActive{
     background-color: rgba(233, 241, 155, 0.322);
+}
+
+@media (max-width: 1550px){
+    .sideCard{
+        display: none;
+    }
+
+    .mainCard{
+        height: 80vh;
+    }
+
+    body{
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .mobileCenter{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .showDropdown{
+        display: unset;
+    }
+
+    .mobileHide{
+        display: block;
+    }
+}
+
+@media (max-width: 1000px){
+    .mobileWidth{
+        width: 24rem !important;
+    }
+
+    .mobileHide{
+        left: 40%;
+    }
+}
+
+@media (max-width: 500px){
+    .mobileWidth{
+        width: 16rem !important;
+    }
+
+    .mainCard{
+        height: 70vh;
+    }
 }

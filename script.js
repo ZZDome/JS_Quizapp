@@ -171,7 +171,7 @@ let hitAnswer = false;
 function tempStart() {
     return /* html */ `
         <div class="card-body cardBody">
-            <div class="card text-center" style="width: 48rem;">
+            <div class="card text-center mobileWidth" style="width: 48rem;">
                 <div class="card-body">
                     <h5 class="card-title">Allgemeinwissen Quiz</h5>
                     <p class="card-text">Hier werden dir 20 Fragen gestellt um dein Allgemeinwissen zu Testen. Viel Spaß.</p>
@@ -237,7 +237,7 @@ function tempQuest(i) {
 function tempScore(){
     return /* html */ `
     <div class="card-body cardBody">
-        <div class="card text-center" style="width: 48rem;">
+        <div class="card text-center mobileWidth" style="width: 48rem;">
         <h5 class="card-title mt-3">Scoreboard</h5>
         <table class="table">
             <thead>
@@ -273,7 +273,7 @@ function tempFillTable(i, name, score){
 function tempCredits(){
     return /* html */ `
     <div class="card-body cardBody">
-        <div class="card" style="width: 32rem;">
+        <div class="card mobileWidth" style="width: 32rem;">
             <h3>Credits</h3>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item"><b>Creator:</b> Dominik Waldow</li>

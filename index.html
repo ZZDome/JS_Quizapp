@@ -9,13 +9,27 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="script.js"></script>
 
 </head>
 <body onload="render()">
-    
-    <div class="card mb-3 mainCard">
-        <div class="row g-0">
+  <img src="img/logo.png" class="img-fluid rounded-start mobileHide">
+  <div class="dropdown showDropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+      Menu
+    </button>
+    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+      <li><a onclick="showGeneral()" class="dropdown-item active" href="#">Allgemeinwissen Quiz</a></li>
+      <li><a class="dropdown-item" href="#">Another Quiz on future update.</a></li>
+      <li><a onclick="showScoreboard()" class="dropdown-item" href="#">Scoreboard</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a onclick="showCredits()" class="dropdown-item" href="#">Credits</a></li>
+    </ul>
+  </div>
+    <div class="card mb-3 mainCard mobileCenter">
+      
+        <div class="row g-0 mobileCenter">
           <div class="col-md-4 sideCard">
             <img src="img/logo.png" class="img-fluid rounded-start">
             <div class="card">
@@ -41,7 +55,7 @@
           </div>
           <div id="questCard" class="col-md-8">
             <div class="card-body cardBody">
-              <div class="card homeCard" style="width: 48rem;">
+              <div class="card homeCard mobileWidth" style="width: 48rem;">
                 <img src="img/body-bg.jpg" class="card-img-top" alt=>
                 <div class="card-body">
                   <p class="card-text">Willkommen bei der QUIZAPP.</p>
