@@ -166,6 +166,9 @@ let myAnwers = [];
 let startGeneral = false;
 let tempQuestion = 0;
 let hitAnswer = false;
+let soundCorrect = new Audio ('sound/correct.mp3');
+let soundWrong = new Audio ('sound/wrong.mp3');
+let soundApplause = new Audio ('sound/applause.mp3');
 
 
 function tempStart() {
@@ -359,6 +362,7 @@ function fillTable(){
 }
 
 function generalEndPage(){
+    soundApplause.play();
     let totalScore = calcScore();
     let endPage = document.getElementById('questCard');
     endPage.innerHTML = /* html */ `
@@ -398,10 +402,12 @@ function checkAnswer(i, answer) {
         hitAnswer = true;
         if (answer == questions[i].rightAnswer) {
             document.getElementById('answer' + answer).classList.add('bg-success');
+            soundCorrect.play();
             saveAnswers(i, true, 100);
             delayNextQuest(i);
         } else {
             document.getElementById('answer' + answer).classList.add('bg-danger');
+            soundWrong.play();
             saveAnswers(i, false, 10);
             delayNextQuest(i);
         }
